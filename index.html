@@ -4,41 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milan Kumar | Data Scientist & ML Engineer</title>
+    <title>Milan Kumar | Data Scientist &amp; ML Engineer</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Portfolio of Milan Kumar, a Data Scientist and ML Engineer building practical data science, machine learning, and Generative AI applications.">
     <meta name="keywords"
-        content="Data Scientist, ML Engineer, Machine Learning, Generative AI, Portfolio, Milan Kumar, B.Tech CSE, Fresh graduate">
+        content="Data Scientist, ML Engineer, Machine Learning, Generative AI, Portfolio, Milan Kumar, B.Tech CSE, AI ML graduate">
     <meta name="author" content="Milan Kumar">
 
-    <!-- Open Graph Metadata (for sharing on LinkedIn, GitHub, etc.) -->
-    <meta property="og:title" content="Milan Kumar | Data Scientist & ML Engineer">
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Milan Kumar | Data Scientist &amp; ML Engineer">
     <meta property="og:description"
         content="Portfolio of Milan Kumar, a Data Scientist and ML Engineer building practical data science, machine learning, and Generative AI applications.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://milan-portfolio.vercel.app">
+    <meta property="og:url" content="https://milan-7417.github.io/my-portfolio/">
     <meta property="og:image" content="assets/projects/trustai.png">
 
-    <!-- Favicon Placeholder -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Script -->
+    <!-- Three.js (Local with CDN fallback for 100% offline & GitHub Pages reliability) -->
+    <script src="assets/three.min.js"></script>
+    <script>
+        if (typeof THREE === 'undefined') {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- Main Script -->
     <script defer src="script.js"></script>
 </head>
 
 <body>
+    <!-- Subtle Dynamic Canvas Background -->
+    <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Desktop Custom Cursor -->
+    <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-outline" class="cursor-outline" aria-hidden="true"></div>
+
+    <!-- Reading Progress Bar -->
+    <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
     <!-- Skip to Content for Accessibility -->
     <a href="#about" class="skip-to-content">Skip to content</a>
 
@@ -53,6 +71,7 @@
             <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
                 <ul class="nav-list">
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#workflow" class="nav-link">Workflow</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#hackathons" class="nav-link">Hackathons</a></li>
@@ -73,20 +92,38 @@
     <main>
         <!-- Hero Section -->
         <section class="hero-section" id="hero">
-            <div class="hero-grid-bg"></div>
             <div class="container hero-container">
                 <!-- Left Hero Content -->
                 <div class="hero-content">
+                    <div class="hero-status-pill">
+                        <span class="status-dot-green"></span>
+                        <span>Open to entry-level <span class="green-highlight">Data Science &amp; ML</span> opportunities</span>
+                    </div>
 
-                    <h1 class="hero-title">Milan Kumar</h1>
-                    <p class="hero-subtitle">B.Tech CSE Graduate <span class="accent-highlight">(AI &amp; ML)</span></p>
+                    <h1 class="hero-title">
+                        <span class="hero-greeting">Hi, I'm</span>
+                        <span class="hero-name-gradient">Milan Kumar</span>
+                    </h1>
+
+                    <p class="hero-subtitle">Data Scientist &amp; ML Engineer</p>
+
+                    <div class="hero-degree-badge">
+                        <span class="degree-icon">🎓</span>
+                        <span>B.Tech CSE Graduate <strong class="accent-highlight">(AI &amp; ML)</strong></span>
+                    </div>
+
                     <p class="hero-positioning">
-                        <span class="pos-tag">Data Science</span> |
-                        <span class="pos-tag">Machine Learning</span> |
-                        <span class="pos-tag">Deep Learning</span> |
-                        <span class="pos-tag">NLP</span> |
+                        <span class="pos-tag">Data Science</span>
+                        <span class="pos-separator">•</span>
+                        <span class="pos-tag">Machine Learning</span>
+                        <span class="pos-separator">•</span>
+                        <span class="pos-tag">Deep Learning</span>
+                        <span class="pos-separator">•</span>
+                        <span class="pos-tag">NLP</span>
+                        <span class="pos-separator">•</span>
                         <span class="pos-tag">Generative AI</span>
                     </p>
+
                     <p class="hero-description">
                         Computer Science &amp; Engineering (AI &amp; ML) graduate building practical, end-to-end data
                         science and machine learning solutions — spanning exploratory data analysis, feature
@@ -94,309 +131,293 @@
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary">Explore Projects <span
-                                class="btn-arrow">→</span></a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch <span class="btn-arrow">→</span></a>
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Explore Projects</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                        <a href="#workflow" class="btn btn-secondary">
+                            <span>How I Build ML</span>
+                            <span class="btn-arrow">⚡</span>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">
+                            <span>Get In Touch</span>
+                        </a>
                     </div>
 
                     <div class="hero-socials">
                         <a href="https://github.com/milan-7417" target="_blank" rel="noopener noreferrer"
-                            aria-label="GitHub Profile" class="social-icon-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
+                            aria-label="GitHub Profile" class="social-icon-link" title="GitHub Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
                                 fill="currentColor">
                                 <path
                                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/milan-kumar-14167a30b/" target="_blank"
-                            rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
+                        <a href="https://www.linkedin.com/in/milan-kumar1/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon-link" title="LinkedIn Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
                                 fill="currentColor">
                                 <path
                                     d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                         </a>
-                        <a href="mailto:mrai48851@gmail.com" aria-label="Email Me" class="social-icon-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
+                        <a href="mailto:mrai48851@gmail.com" aria-label="Email Me" class="social-icon-link" title="Email Direct">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
                                 fill="currentColor">
                                 <path
                                     d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 3.937v-8.193l4.623 4.256zm1.455 1.341l3.922 3.609 3.971-3.578 5.619 5.7h-19.112l5.6-5.731zm7.426-1.3l4.5 4.054v-8.19l-4.5 4.136zm-3.504-2.836l-10-9.093h19.861l-9.861 9.093z" />
                             </svg>
                         </a>
                     </div>
-
-                    <div class="hero-status-bottom">
-                        <span class="status-dot-green"></span>
-                        <span>Open to entry-level <span class="green-highlight">Data Science &amp; ML</span>
-                            opportunities</span>
-                    </div>
                 </div>
 
-                <!-- Right Hero: My Workflow Card -->
-                <div class="hero-dashboard-wrapper">
-                    <div class="workflow-dashboard-card">
-                        <!-- Card Header -->
-                        <div class="wf-card-header">
-                            <div class="wf-main-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                    fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M3 3v18h18" />
-                                    <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
-                                </svg>
-                            </div>
-                            <div class="wf-header-text">
-                                <h2 class="wf-card-title">My Workflow</h2>
-                                <p class="wf-card-subtitle">From raw data to real-world impact</p>
-                            </div>
-                        </div>
-
-                        <!-- 6-Stage Workflow Flow -->
-                        <div class="wf-stages-flow">
-                            <!-- 1. Data -->
-                            <div class="wf-flow-item">
-                                <div class="wf-tile-icon wf-tile-cyan">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <ellipse cx="12" cy="5" rx="9" ry="3" />
-                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                                    </svg>
-                                </div>
-                                <span class="wf-flow-name">Data</span>
-                            </div>
-
-                            <span class="wf-flow-arrow">→</span>
-
-                            <!-- 2. EDA -->
-                            <div class="wf-flow-item">
-                                <div class="wf-tile-icon wf-tile-blue">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="11" cy="11" r="8" />
-                                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                                        <line x1="11" y1="8" x2="11" y2="14" />
-                                        <line x1="8" y1="11" x2="14" y2="11" />
-                                    </svg>
-                                </div>
-                                <span class="wf-flow-name">EDA</span>
-                            </div>
-
-                            <span class="wf-flow-arrow">→</span>
-
-                            <!-- 3. Feature Engineering -->
-                            <div class="wf-flow-item">
-                                <div class="wf-tile-icon wf-tile-purple">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="3" />
-                                        <path
-                                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                                    </svg>
-                                </div>
-                                <span class="wf-flow-name">Feature<br>Engineering</span>
-                            </div>
-
-                            <span class="wf-flow-arrow">→</span>
-
-                            <!-- 4. Modeling -->
-                            <div class="wf-flow-item">
-                                <div class="wf-tile-icon wf-tile-violet">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="18" cy="5" r="3" />
-                                        <circle cx="6" cy="12" r="3" />
-                                        <circle cx="18" cy="19" r="3" />
-                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-                                    </svg>
-                                </div>
-                                <span class="wf-flow-name">Modeling</span>
-                            </div>
-
-                            <span class="wf-flow-arrow">→</span>
-
-                            <!-- 5. Evaluation -->
-                            <div class="wf-flow-item">
-                                <div class="wf-tile-icon wf-tile-cyan">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="18" y1="20" x2="18" y2="10" />
-                                        <line x1="12" y1="20" x2="12" y2="4" />
-                                        <line x1="6" y1="20" x2="6" y2="14" />
-                                    </svg>
-                                </div>
-                                <span class="wf-flow-name">Evaluation</span>
-                            </div>
-
-                            <span class="wf-flow-arrow">→</span>
-
-                            <!-- 6. Deployment -->
-                            <div class="wf-flow-item">
-                                <div class="wf-tile-icon wf-tile-rocket">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-                                        <path
-                                            d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-                                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-                                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-                                    </svg>
-                                </div>
-                                <span class="wf-flow-name">Deployment</span>
-                            </div>
-                        </div>
-
-                        <!-- 3 Stats Cards Grid -->
-                        <div class="wf-stats-row">
-                            <!-- Card 1: 12+ Projects Shipped -->
-                            <div class="wf-stat-card">
-                                <div class="wf-stat-badge wf-badge-blue">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
-                                    </svg>
-                                </div>
-                                <div class="wf-stat-content">
-                                    <span class="wf-stat-digit" style="color: #60a5fa;">12+</span>
-                                    <span class="wf-stat-caption">Projects<br>Shipped</span>
-                                </div>
-                            </div>
-
-                            <!-- Card 2: 5 Featured Projects -->
-                            <div class="wf-stat-card">
-                                <div class="wf-stat-badge wf-badge-purple">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                </div>
-                                <div class="wf-stat-content">
-                                    <span class="wf-stat-digit" style="color: #c084fc;">5</span>
-                                    <span class="wf-stat-caption">Featured<br>Projects</span>
-                                </div>
-                            </div>
-
-                            <!-- Card 3: 3 Competitions -->
-                            <div class="wf-stat-card">
-                                <div class="wf-stat-badge wf-badge-teal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                                        fill="currentColor">
-                                        <path
-                                            d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
-                                    </svg>
-                                </div>
-                                <div class="wf-stat-content">
-                                    <span class="wf-stat-digit" style="color: #2dd4bf;">3</span>
-                                    <span class="wf-stat-caption">Competitions</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Footer Pipeline Line -->
-                        <div class="wf-card-footer">
-                            <span class="wf-code-icon">&lt;/&gt;</span>
-                            <span class="wf-footer-pipe-text">
-                                Data <span class="wf-pipe-arr">→</span> EDA <span class="wf-pipe-arr">→</span> Feature
-                                Engineering <span class="wf-pipe-arr">→</span> Modeling <span
-                                    class="wf-pipe-arr">→</span> Evaluation <span class="wf-pipe-arr">→</span>
-                                Deployment
-                            </span>
+                <!-- Right Hero: 3D AI Intelligence Core -->
+                <div class="hero-visual-wrapper">
+                    <div class="ai-core-3d-card">
+                        <!-- 3D Canvas Viewport (Rotating 3D visual only) -->
+                        <div class="ai-canvas-container" id="hero-3d-container">
+                            <canvas id="hero-3d-canvas" aria-label="Interactive 3D Neural Network Core"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- Hero Stats Banner -->
+        <section class="stats-banner-section" id="stats-banner">
+            <div class="container stats-banner-container">
+                <div class="stats-grid">
+                    <div class="stat-box reveal">
+                        <div class="stat-number-wrap">
+                            <span class="counter-number" data-target="12">0</span><span class="stat-plus">+</span>
+                        </div>
+                        <span class="stat-caption">Projects Shipped</span>
+                        <p class="stat-sub">From EDA to live web applications</p>
+                    </div>
+
+                    <div class="stat-box reveal">
+                        <div class="stat-number-wrap">
+                            <span class="counter-number" data-target="5">0</span>
+                        </div>
+                        <span class="stat-caption">Featured Systems</span>
+                        <p class="stat-sub">Fraud detection, RAG, XAI, AutoML</p>
+                    </div>
+
+                    <div class="stat-box reveal">
+                        <div class="stat-number-wrap">
+                            <span class="counter-number" data-target="4">0</span>
+                        </div>
+                        <span class="stat-caption">Competitions &amp; Hackathons</span>
+                        <p class="stat-sub">Devpost Winner &bull; Kaggle Competitor</p>
+                    </div>
+
+                    <div class="stat-box reveal">
+                        <div class="stat-number-wrap">
+                            <span class="counter-number" data-target="4">0</span><span class="stat-unit">mo</span>
+                        </div>
+                        <span class="stat-caption">ML Internship</span>
+                        <p class="stat-sub">Data Science &amp; ML at YBI Foundation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section (Visual Storytelling) -->
         <section class="about-section" id="about">
             <div class="container">
                 <div class="section-header">
+                    <span class="section-category-tag">Engineering Foundation</span>
                     <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">A computer science graduate specializing in turning complex data into dependable machine learning systems.</p>
                     <div class="section-line"></div>
                 </div>
 
-                <div class="about-grid">
-                    <div class="about-text reveal">
-                        <p class="about-lead">
-                            I'm a Computer Science &amp; Engineering graduate specializing in Artificial Intelligence and Machine Learning, with a strong focus on <strong>Data Science and Machine Learning</strong>.
+                <!-- 3 Visual Storytelling Pillars -->
+                <div class="about-pillars-grid">
+                    <!-- Pillar 1: Who I Am -->
+                    <div class="pillar-card reveal">
+                        <div class="pillar-icon-box pillar-blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                        <h3 class="pillar-title">Who I Am</h3>
+                        <p class="pillar-text">
+                            B.Tech Computer Science &amp; Engineering graduate specializing in Artificial Intelligence and Machine Learning. I enjoy turning data into practical ML solutions, from exploring patterns and engineering features to building and deploying predictive systems.
                         </p>
-                        <p>
-                            I build practical solutions across machine learning, deep learning, NLP, Generative AI, data
-                            analysis, and predictive modeling. My work spans healthcare, finance, workforce analytics,
-                            machine translation, fraud detection, and intelligent decision-support systems.
-                        </p>
-                        <p>
-                            I have built and shipped 12+ projects, taking ideas from data exploration and model development to deployment and usable applications.
-                        </p>
+                        <div class="pillar-tags">
+                            <span>B.Tech CSE</span>
+                            <span>AI &amp; ML</span>
+                            <span>Data Science</span>
+                        </div>
                     </div>
 
-                    <div class="about-cards">
-                        <!-- Education Card -->
-                        <div class="info-card reveal">
-                            <div class="info-card-header">
-                                <div class="info-icon info-icon-blue">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
-                                    </svg>
+                    <!-- Pillar 2: What I Build -->
+                    <div class="pillar-card reveal">
+                        <div class="pillar-icon-box pillar-purple">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                <polyline points="2 17 12 22 22 17" />
+                                <polyline points="2 12 12 17 22 12" />
+                            </svg>
+                        </div>
+                        <h3 class="pillar-title">What I Build</h3>
+                        <p class="pillar-text">
+                            I build end-to-end machine learning and AI applications across prediction, NLP, explainability, and intelligent assistants &mdash; combining classical ML, deep learning, and modern LLM-based approaches.
+                        </p>
+                        <div class="pillar-tags">
+                            <span>Predictive ML</span>
+                            <span>Deep Learning</span>
+                            <span>NLP &bull; LLMs</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3: How I Work -->
+                    <div class="pillar-card reveal">
+                        <div class="pillar-icon-box pillar-teal">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 14 14" />
+                            </svg>
+                        </div>
+                        <h3 class="pillar-title">How I Work</h3>
+                        <p class="pillar-text">
+                            I follow a structured, experiment-driven workflow &mdash; understanding the problem, exploring the data, engineering meaningful features, training and validating models, and taking useful solutions into production.
+                        </p>
+                        <div class="pillar-tags">
+                            <span>Problem Understanding</span>
+                            <span>Feature Engineering</span>
+                            <span>Production Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Section (MAIN DISTINCTIVE FEATURE) -->
+        <section class="workflow-section" id="workflow">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-category-tag">Core Methodology</span>
+                    <h2 class="section-title">How I Turn Data Into Intelligence</h2>
+                    <p class="section-subtitle">From raw data to real-world impact &mdash; an interactive representation of how I formulate, build, validate, and ship ML systems.</p>
+                    <div class="section-line"></div>
+                </div>
+
+                <!-- 3D Interactive Pipeline Track -->
+                <div class="workflow-pipeline-interactive">
+                    <!-- Progress Step Nodes (6 Stages) -->
+                    <div class="pipeline-track-wrapper">
+                        <div class="pipeline-progress-bar" id="pipeline-progress-bar"></div>
+                        <div class="pipeline-nodes-container" id="pipeline-nodes">
+                            <!-- 1. DISCOVER -->
+                            <button type="button" class="pipeline-node-btn active" data-stage="0" aria-label="Stage 1: Discover">
+                                <div class="node-circle">
+                                    <span class="node-num">01</span>
+                                    <span class="node-icon">🔍</span>
                                 </div>
-                                <span class="info-title">Education</span>
+                                <span class="node-name">DISCOVER</span>
+                            </button>
+
+                            <!-- 2. DECODE -->
+                            <button type="button" class="pipeline-node-btn" data-stage="1" aria-label="Stage 2: Decode">
+                                <div class="node-circle">
+                                    <span class="node-num">02</span>
+                                    <span class="node-icon">📊</span>
+                                </div>
+                                <span class="node-name">DECODE</span>
+                            </button>
+
+                            <!-- 3. ENGINEER -->
+                            <button type="button" class="pipeline-node-btn" data-stage="2" aria-label="Stage 3: Engineer">
+                                <div class="node-circle">
+                                    <span class="node-num">03</span>
+                                    <span class="node-icon">⚙️</span>
+                                </div>
+                                <span class="node-name">ENGINEER</span>
+                            </button>
+
+                            <!-- 4. LEARN -->
+                            <button type="button" class="pipeline-node-btn" data-stage="3" aria-label="Stage 4: Learn">
+                                <div class="node-circle">
+                                    <span class="node-num">04</span>
+                                    <span class="node-icon">🧠</span>
+                                </div>
+                                <span class="node-name">LEARN</span>
+                            </button>
+
+                            <!-- 5. VALIDATE -->
+                            <button type="button" class="pipeline-node-btn" data-stage="4" aria-label="Stage 5: Validate">
+                                <div class="node-circle">
+                                    <span class="node-num">05</span>
+                                    <span class="node-icon">🛡️</span>
+                                </div>
+                                <span class="node-name">VALIDATE</span>
+                            </button>
+
+                            <!-- 6. DELIVER -->
+                            <button type="button" class="pipeline-node-btn" data-stage="5" aria-label="Stage 6: Deliver">
+                                <div class="node-circle">
+                                    <span class="node-num">06</span>
+                                    <span class="node-icon">🚀</span>
+                                </div>
+                                <span class="node-name">DELIVER</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Stage Deep-Dive Card -->
+                    <div class="stage-deepdive-card" id="stage-deepdive-card">
+                        <div class="sdd-header">
+                            <div class="sdd-identity">
+                                <span class="sdd-badge" id="sdd-stage-badge">STAGE 01</span>
+                                <h3 class="sdd-title" id="sdd-stage-title">DISCOVER</h3>
+                                <p class="sdd-tagline" id="sdd-stage-tagline">Collect data, define the problem and understand the business context.</p>
                             </div>
-                            <div class="info-card-body">
-                                <h3 class="info-details">B.Tech CSE</h3>
-                                <p class="info-sub">Artificial Intelligence &amp; Machine Learning</p>
+                            <div class="sdd-nav-arrows">
+                                <button type="button" class="sdd-step-btn" id="sdd-prev-btn" aria-label="Previous Workflow Stage">&larr;</button>
+                                <span class="sdd-step-indicator" id="sdd-step-indicator">01 / 06</span>
+                                <button type="button" class="sdd-step-btn" id="sdd-next-btn" aria-label="Next Workflow Stage">&rarr;</button>
                             </div>
                         </div>
 
-                        <!-- Focus Card -->
-                        <div class="info-card reveal">
-                            <div class="info-card-header">
-                                <div class="info-icon info-icon-purple">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z" />
-                                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z" />
-                                    </svg>
-                                </div>
-                                <span class="info-title">Focus</span>
+                        <div class="sdd-body-grid">
+                            <div class="sdd-col">
+                                <h4 class="sdd-col-heading">Methodology &amp; Objective</h4>
+                                <p class="sdd-desc" id="sdd-stage-desc">
+                                    Formulating domain hypotheses, establishing objective KPIs, parsing structured databases, ingesting API streams, and validating schema integrity before model exploration begins.
+                                </p>
+                                <h4 class="sdd-col-heading" style="margin-top: 16px;">Core Techniques</h4>
+                                <ul class="sdd-list" id="sdd-stage-techniques">
+                                    <li>Problem formulation &amp; metric alignment</li>
+                                    <li>Data ingestion &amp; schema enforcement</li>
+                                    <li>Missing value profiling &amp; anomaly auditing</li>
+                                </ul>
                             </div>
-                            <div class="info-card-body">
-                                <h3 class="info-details">Data Science &amp; ML</h3>
-                                <p class="info-sub">Deep Learning • NLP • Generative AI</p>
-                            </div>
-                        </div>
 
-                        <!-- Projects Card -->
-                        <div class="info-card reveal">
-                            <div class="info-card-header">
-                                <div class="info-icon info-icon-teal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-                                        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-                                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-                                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-                                    </svg>
+                            <div class="sdd-col sdd-col-right">
+                                <h4 class="sdd-col-heading">Technologies Used</h4>
+                                <div class="sdd-tech-tags" id="sdd-stage-tech">
+                                    <span>Python</span>
+                                    <span>SQL</span>
+                                    <span>Pandas</span>
+                                    <span>APIs</span>
                                 </div>
-                                <span class="info-title">Projects</span>
-                            </div>
-                            <div class="info-card-body">
-                                <h3 class="info-details">12+ Projects Shipped</h3>
-                                <p class="info-sub">From experiments to applications</p>
+
+                                <div class="sdd-workflow-summary">
+                                    <span class="spe-label">Workflow Objective</span>
+                                    <h5 class="spe-title" id="sdd-focus-title">Formulation &amp; Data Pipeline</h5>
+                                    <p class="spe-text" id="sdd-focus-text">
+                                        Establishing problem constraints, data ingestion channels, and mathematical evaluation criteria.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -408,103 +429,141 @@
         <section class="skills-section" id="skills">
             <div class="container">
                 <div class="section-header">
+                    <span class="section-category-tag">Toolkit &amp; Expertise</span>
                     <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Core technologies, frameworks, and methodologies across the machine learning lifecycle.</p>
                     <div class="section-line"></div>
                 </div>
 
-                <div class="skills-grid" id="skills-container">
-                    <!-- Loaded dynamically via script.js for clean organization -->
+                <!-- Skills Clusters Grid (6 Exact Categories) -->
+                <div class="skills-clusters-grid" id="skills-clusters-container">
+                    <!-- Populated dynamically via script.js -->
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section (NO CATEGORIES - Unified Showcase) -->
         <section class="projects-section" id="projects">
             <div class="container">
                 <div class="section-header">
+                    <span class="section-category-tag">Engineering Portfolio</span>
                     <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-subtitle">Building practical data science and machine learning solutions across
-                        multiple domains.</p>
+                    <p class="section-subtitle">A unified body of practical machine learning, deep learning, NLP, and data science solutions built and deployed from scratch.</p>
                     <div class="section-line"></div>
                 </div>
 
-                <div class="projects-grid" id="projects-container">
-                    <!-- Dynamically populated from script.js -->
-                </div>
-            </div>
-        </section>
+                <!-- Immersive 3D Spotlight Showcase -->
+                <div class="project-showcase-stage" id="project-showcase-stage">
+                    <!-- Spotlight Main Card with 3D Depth -->
+                    <div class="spotlight-card" id="spotlight-card">
+                        <!-- Left: Visual Preview -->
+                        <div class="spotlight-visual-wrapper" id="spotlight-img-wrap" data-lightbox-src="assets/projects/trustai.png" data-lightbox-caption="TrustAI - Multi-Domain Decision Intelligence Platform">
+                            <img id="spotlight-img" class="spotlight-img" src="assets/projects/trustai.png" alt="Featured Project Visual" loading="lazy">
+                            <div class="spotlight-zoom-indicator">
+                                <span class="szi-icon">🔍</span>
+                                <span>Click to Enlarge</span>
+                            </div>
+                        </div>
 
-        <!-- Achievement Banner Section (Count-Up Animation) -->
-        <section class="achievement-banner" id="achievement-banner">
-            <div class="container banner-container">
-                <div class="banner-content">
-                    <h2 class="banner-heading">Built. Shipped. Deployed.</h2>
-                    <div class="banner-stats-grid">
-                        <div class="banner-stat-item">
-                            <div class="stat-num-wrap">
-                                <span class="counter-number" data-target="12">0</span><span
-                                    class="counter-plus">+</span>
+                        <!-- Right: Content & Actions -->
+                        <div class="spotlight-content">
+                            <div class="spotlight-top-meta">
+                                <span class="spotlight-counter" id="spotlight-counter">01 / 06</span>
+                                <span class="spotlight-featured-badge">FEATURED WORK</span>
                             </div>
-                            <span class="stat-label">Projects Shipped</span>
-                        </div>
-                        <div class="banner-stat-item">
-                            <div class="stat-num-wrap">
-                                <span class="counter-number" data-target="5">0</span>
+
+                            <h3 class="spotlight-title" id="spotlight-name">TrustAI</h3>
+                            <h4 class="spotlight-subtitle" id="spotlight-title-text">Multi-Domain AI Decision Intelligence Platform</h4>
+
+                            <p class="spotlight-desc" id="spotlight-desc">
+                                A multi-domain decision intelligence platform integrating explainable tabular ML predictions (XGBoost + SHAP) with generative AI conversational interfaces to explain models in clinical risk, credit scoring, and educational recommendation tasks.
+                            </p>
+
+                            <div class="spotlight-tech-stack" id="spotlight-tech-stack">
+                                <!-- Populated dynamically -->
                             </div>
-                            <span class="stat-label">Featured Projects</span>
-                        </div>
-                        <div class="banner-stat-item">
-                            <div class="stat-num-wrap">
-                                <span class="counter-number" data-target="3">0</span>
+
+                            <div class="spotlight-actions">
+                                <a id="spotlight-github-btn" href="https://github.com/milan-7417/TrustAI" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                    <span>GitHub Repository</span>
+                                    <span class="btn-arrow">↗</span>
+                                </a>
+                                <a id="spotlight-demo-btn" href="https://trustai-dho5.onrender.com/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                                    <span>Live Demo</span>
+                                    <span class="btn-arrow">↗</span>
+                                </a>
+                                <button type="button" id="spotlight-details-btn" class="btn btn-ghost" data-project-id="trustai">
+                                    <span>Deep-Dive Details</span>
+                                    <span class="btn-arrow">🔍</span>
+                                </button>
                             </div>
-                            <span class="stat-label">Competitions &amp; Hackathons</span>
                         </div>
                     </div>
-                    <p class="banner-text">
-                        From data exploration and model development to deployed machine learning applications.
-                    </p>
+
+                    <!-- Showcase Carousel Navigation Controls -->
+                    <div class="showcase-controls">
+                        <button type="button" class="showcase-nav-btn" id="showcase-prev" aria-label="Previous Project">
+                            <span class="snb-arrow">&larr;</span>
+                            <span class="snb-text">Previous</span>
+                        </button>
+
+                        <div class="showcase-dots" id="showcase-dots" role="tablist">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <button type="button" class="showcase-nav-btn" id="showcase-next" aria-label="Next Project">
+                            <span class="snb-text">Next</span>
+                            <span class="snb-arrow">&rarr;</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick-Selector Thumbnail Strip (All 6 Projects) -->
+                    <div class="showcase-thumbnail-strip" id="showcase-thumbnail-strip" aria-label="Quick Select Project">
+                        <!-- Populated dynamically via script.js -->
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Hackathons Section -->
+        <!-- Hackathons & Competitions Section -->
         <section class="hackathons-section" id="hackathons">
             <div class="container">
                 <div class="section-header">
+                    <span class="section-category-tag">Competitive Engineering</span>
                     <h2 class="section-title">Hackathons &amp; Competitions</h2>
-                    <p class="section-subtitle">Applying data science and machine learning to competitive challenges and
-                        real-world problem statements.</p>
+                    <p class="section-subtitle">Applying data science, deep learning, and machine learning to competitive challenges and real-world problem statements.</p>
                     <div class="section-line"></div>
                 </div>
 
-                <div class="hackathons-grid" id="hackathons-container">
+                <div class="hackathons-timeline-grid" id="hackathons-container">
                     <!-- Dynamically populated from script.js -->
                 </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
+        <!-- Certifications & Achievements Section -->
         <section class="certifications-section" id="certifications">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Certifications</h2>
+                    <span class="section-category-tag">Verified Credentials</span>
+                    <h2 class="section-title">Certifications &amp; Achievements</h2>
+                    <p class="section-subtitle">Formal credentials and competition recognitions in Data Science and Machine Learning.</p>
                     <div class="section-line"></div>
                 </div>
+
+                <!-- Certifications Grid -->
                 <div class="certs-grid" id="certs-container">
                     <!-- Dynamically populated from script.js -->
                 </div>
-            </div>
-        </section>
 
-        <!-- Achievements Section -->
-        <section class="achievements-section" id="achievements">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Achievements</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="achievements-grid" id="achievements-container">
-                    <!-- Dynamically populated from script.js -->
+                <!-- Achievements Grid -->
+                <div class="achievements-section-inner" id="achievements">
+                    <div class="achievements-heading-wrap">
+                        <h3 class="achievements-subheading">Competition Recognitions</h3>
+                    </div>
+                    <div class="achievements-grid" id="achievements-container">
+                        <!-- Dynamically populated from script.js -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -513,42 +572,42 @@
         <section class="contact-section" id="contact">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Let's Connect</h2>
-                    <p class="section-subtitle">I'm open to entry-level opportunities in Data Science, Machine Learning,
-                        and related AI applications.</p>
+                    <span class="section-category-tag">Get In Touch</span>
+                    <h2 class="section-title">Let's Build Something Intelligent.</h2>
+                    <p class="section-subtitle">Open to entry-level opportunities in Data Science, Machine Learning, and applied AI systems.</p>
                     <div class="section-line"></div>
                 </div>
 
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3 class="contact-info-title">Contact Channels</h3>
-                        <p class="contact-info-desc">Feel free to reach out to discuss job roles, collaborations, or
-                            hackathons. I'll get back to you as soon as possible.</p>
+                        <h3 class="contact-info-title">Direct Connect Channels</h3>
+                        <p class="contact-info-desc">
+                            Feel free to reach out to discuss job roles, collaborations, research projects, or hackathons. I'll get back to you as soon as possible.
+                        </p>
 
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <span class="contact-icon">📧</span>
-                                <div class="contact-item-text">
-                                    <span class="contact-label">Email</span>
-                                    <a href="mailto:mrai48851@gmail.com" class="contact-value">mrai48851@gmail.com</a>
-                                </div>
+                        <!-- Emoji-Only Direct Connect Hub (Zero Raw Link URLs Displayed) -->
+                        <div class="connect-emoji-wrapper">
+                            <p class="connect-channel-hint">Connect with me directly:</p>
+                            <div class="connect-emoji-list" role="list">
+                                <a href="mailto:mrai48851@gmail.com" class="emoji-link-btn" role="listitem" id="connect-mail" aria-label="Send Email" title="Send Email" data-platform="Email">
+                                    <span class="emoji-big" role="img" aria-label="Email">📧</span>
+                                    <span class="emoji-pill-label">Email</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/milan-kumar1/" target="_blank" rel="noopener noreferrer" class="emoji-link-btn" role="listitem" id="connect-linkedin" aria-label="LinkedIn" title="LinkedIn" data-platform="LinkedIn">
+                                    <span class="emoji-big" role="img" aria-label="LinkedIn">💼</span>
+                                    <span class="emoji-pill-label">LinkedIn</span>
+                                </a>
+                                <a href="https://github.com/milan-7417" target="_blank" rel="noopener noreferrer" class="emoji-link-btn" role="listitem" id="connect-github" aria-label="GitHub" title="GitHub" data-platform="GitHub">
+                                    <span class="emoji-big" role="img" aria-label="GitHub">💻</span>
+                                    <span class="emoji-pill-label">GitHub</span>
+                                </a>
                             </div>
-                            <div class="contact-item">
-                                <span class="contact-icon">🔗</span>
-                                <div class="contact-item-text">
-                                    <span class="contact-label">LinkedIn</span>
-                                    <a href="https://www.linkedin.com/in/milan-kumar-14167a30b/" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="contact-value">linkedin.com/in/milan-kumar-14167a30b/</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <span class="contact-icon">💻</span>
-                                <div class="contact-item-text">
-                                    <span class="contact-label">GitHub</span>
-                                    <a href="https://github.com/milan-7417" target="_blank" rel="noopener noreferrer"
-                                        class="contact-value">github.com/milan-7417</a>
-                                </div>
+
+                            <div class="connect-copy-strip">
+                                <button type="button" class="btn-copy-action" id="btn-copy-email" aria-label="Copy Email Address">
+                                    <span class="copy-icon">📋</span>
+                                    <span>Copy Email Address</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -557,19 +616,21 @@
                         <form id="contact-form" class="contact-form">
                             <div class="form-group">
                                 <label for="form-name">Name</label>
-                                <input type="text" id="form-name" name="name" placeholder="Your Name" required>
+                                <input type="text" id="form-name" name="name" placeholder="Your Name or Organization" required>
                             </div>
                             <div class="form-group">
                                 <label for="form-email">Email</label>
-                                <input type="email" id="form-email" name="email" placeholder="your.email@example.com"
-                                    required>
+                                <input type="email" id="form-email" name="email" placeholder="your.email@example.com" required>
                             </div>
                             <div class="form-group">
                                 <label for="form-message">Message</label>
                                 <textarea id="form-message" name="message" rows="5"
-                                    placeholder="Write your message here..." required></textarea>
+                                    placeholder="Discuss a role, opportunity, or collaboration..." required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span>Send Message</span>
+                                <span class="btn-arrow">&rarr;</span>
+                            </button>
                         </form>
                         <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
                     </div>
@@ -585,19 +646,17 @@
                 <a href="#hero" class="logo">
                     <span class="logo-name">Milan Kumar</span><span class="logo-dot">.</span>
                 </a>
-                <p class="footer-title">Data Scientist & ML Engineer</p>
+                <p class="footer-title">Data Scientist &amp; ML Engineer &bull; B.Tech CSE (AI &amp; ML)</p>
             </div>
 
             <div class="footer-socials">
-                <a href="https://github.com/milan-7417" target="_blank" rel="noopener noreferrer"
-                    aria-label="GitHub">GitHub</a>
-                <a href="https://www.linkedin.com/in/milan-kumar-14167a30b/" target="_blank" rel="noopener noreferrer"
-                    aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/milan-7417" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/milan-kumar1/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
                 <a href="mailto:mrai48851@gmail.com" aria-label="Email">Email</a>
             </div>
 
             <p class="footer-copyright">
-                &copy; 2026 Milan Kumar. All rights reserved.
+                &copy; 2026 Milan Kumar. Built with precision. Deployed on GitHub Pages.
             </p>
         </div>
     </footer>
@@ -631,6 +690,9 @@
             <p id="lightbox-caption" class="lightbox-caption"></p>
         </div>
     </div>
+
+    <!-- Interactive Toast Notification -->
+    <div id="portfolio-toast" class="portfolio-toast" aria-live="polite"></div>
 
 </body>
 
